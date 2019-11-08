@@ -1,5 +1,5 @@
 // A list of repos that shouldn't be recorded, such as
-// github.com/blog, github.com/explore, etc
+// github.cerner.com/blog, github.cerner.com/explore, etc
 var inValidOwners = [
   'blog',
   'explore',
@@ -22,7 +22,7 @@ function buildRepoMap(cb) {
 
       _.forEach(hits, function(hit) {
         parser.href = hit.url;
-        if (parser.hostname == 'github.com') {
+        if (parser.hostname == 'github.cerner.com') {
           var paths = parser.pathname.split('/');
           if (paths.length >= 3) {
             var owner = paths[1],
@@ -31,7 +31,7 @@ function buildRepoMap(cb) {
 
             if (!repoMap[fullName] && !_.contains(inValidOwners, owner)) {
               repoMap[fullName] = {
-                url: 'https://github.com/' + fullName,
+                url: 'https://github.cerner.com/' + fullName,
                 owner: owner,
                 repoName: repoName
               }
@@ -58,7 +58,7 @@ function processNewURL(url) {
   var parser = document.createElement('a');
   parser.href = url;
 
-  if (parser.hostname == 'github.com') {
+  if (parser.hostname == 'github.cerner.com') {
     var paths = parser.pathname.split('/');
     if (paths.length >= 3) {
       var owner = paths[1],
@@ -69,7 +69,7 @@ function processNewURL(url) {
         var repoMap = storageObj.repoMap;
         if (!repoMap[fullName] && !_.contains(inValidOwners, owner)) {
           repoMap[fullName] = {
-            url: 'https://github.com/' + fullName,
+            url: 'https://github.cerner.com/' + fullName,
             owner: owner,
             repoName: repoName
           }

@@ -59,7 +59,7 @@ chrome.omnibox.onInputChanged.addListener(function(input, suggest) {
     } else {
       defaultSuggestionDescription = '<match>No match found. Search github with "' +
                                      input + '"</match>';
-      defaultSuggestionURL = 'https://github.com/search?q=' + input.replace(' ', '+');
+      defaultSuggestionURL = 'https://github.cerner.com/search?q=' + input.replace(' ', '+');
     }
 
     chrome.omnibox.setDefaultSuggestion({
@@ -74,7 +74,7 @@ chrome.omnibox.onInputEntered.addListener(function(input) {
   var url; 
 
   // If input is a valid Github URL, the user has selected something else than the default option
-  if (_.startsWith(input, 'https://github.com/')) {
+  if (_.startsWith(input, 'https://github.cerner.com/')) {
     url = input;
   } else {
     url = defaultSuggestionURL;
